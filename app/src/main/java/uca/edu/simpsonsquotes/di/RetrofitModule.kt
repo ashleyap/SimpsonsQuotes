@@ -33,7 +33,7 @@ object RetrofitModule {
 
     @Singleton
     @Provides
-    fun provideCatService(retrofit: Retrofit.Builder): QuoteRetrofit {
+    fun provideQuoteService(retrofit: Retrofit.Builder): QuoteRetrofit {
         return retrofit.build().create(QuoteRetrofit::class.java)
     }
 }

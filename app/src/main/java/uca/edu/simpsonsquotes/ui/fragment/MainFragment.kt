@@ -34,18 +34,15 @@ constructor(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupDataState()
-        val layoutManager =
-            LinearLayoutManager(
+        val layoutManager = LinearLayoutManager(
                 requireActivity().applicationContext,
                 LinearLayoutManager.VERTICAL,
-                false
+                true
             )
-        layoutManager.reverseLayout = true
         layoutManager.stackFromEnd = true
         rv_quotes.layoutManager = layoutManager
         rv_quotes.adapter = adapterQuotes
 
-        //setupDataState()
         lifecycleScope.launch {
             viewModel.userIntent.send(Intent.GetQuoteEvent)
         }

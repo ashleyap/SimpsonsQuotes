@@ -1,7 +1,9 @@
 package uca.edu.simpsonsquotes.room
 
+import android.util.Log
 import uca.edu.simpsonsquotes.model.Quote
 import uca.edu.simpsonsquotes.utils.EntityMapper
+import java.util.*
 import javax.inject.Inject
 
 class CacheMapper
@@ -9,6 +11,7 @@ class CacheMapper
 constructor(): EntityMapper<QuoteCacheEntity, Quote> {
     override fun mapFromEntity(entity: QuoteCacheEntity): Quote {
         return Quote(
+            id = entity.id,
             quote = entity.quote,
             character = entity.character,
             image = entity.image,
@@ -18,7 +21,7 @@ constructor(): EntityMapper<QuoteCacheEntity, Quote> {
 
     override fun mapToEntity(domainModel: Quote): QuoteCacheEntity {
         return QuoteCacheEntity(
-            id = 0, //check
+            id = domainModel.id,
             quote = domainModel.quote,
             character = domainModel.character,
             image = domainModel.image,

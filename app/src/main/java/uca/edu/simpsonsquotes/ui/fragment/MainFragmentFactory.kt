@@ -18,7 +18,6 @@ constructor(
                 fragment
             }
             else -> super.instantiate(classLoader, className)
-
         }
     }
 }

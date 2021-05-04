@@ -1,5 +1,6 @@
 package uca.edu.simpsonsquotes.repository
 
+import android.util.Log
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -17,13 +18,17 @@ class QuoteRepository constructor(
 ) {
     suspend fun getQuotes(): Flow<DataState> = flow {
         emit(DataState.Loading)
-        delay(1000)
+        delay(3000)
         try {
             val quoteData = quoteRetrofit.get()
             val quoteMap = newtworkMapper.mapFromEntityList(quoteData)
-            for (tmpQuote in quoteMap){
+            Log.d("AppDebug", "Tamaño de la lista: " + quoteMap.size)
+
+            for (tmpQuote in quoteMap) {
                 quoteDao.insert(cacheMapper.mapToEntity(tmpQuote))
+                Log.d("AppDebug", "Probando " + tmpQuote.id + " de " + tmpQuote.character)
             }
+
             val cacheQuote = quoteDao.get()
             emit(DataState.Success(cacheMapper.mapFromEntityList(cacheQuote)))
         } catch (e: Exception){

@@ -4,6 +4,9 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 class QuoteNetworkEntity(
+    @Expose
+    var id: String,
+
     @SerializedName("quote")
     @Expose
     var quote: String,

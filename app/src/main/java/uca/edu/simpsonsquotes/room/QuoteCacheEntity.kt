@@ -6,9 +6,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "quotes")
 class QuoteCacheEntity (
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "id")
-    var id: Int,
+    var id: String,
 
     @ColumnInfo(name = "quote")
     var quote: String,

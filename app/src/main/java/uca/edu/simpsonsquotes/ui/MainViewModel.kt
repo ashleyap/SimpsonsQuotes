@@ -22,7 +22,7 @@ constructor(
 ) : ViewModel() {
     val userIntent = Channel<Intent>(Channel.UNLIMITED)
 
-    private val _dataState= MutableStateFlow<DataState>(DataState.Idle)
+    private val _dataState = MutableStateFlow<DataState>(DataState.Idle)
 
     val dataState: StateFlow<DataState>
         get() = _dataState
