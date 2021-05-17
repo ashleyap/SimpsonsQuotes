@@ -1,4 +1,4 @@
-###Simpsons Quotes
+Simpsons Quotes
 **Integrantes:**
 Ashley Plata
 Adamary Rivas
