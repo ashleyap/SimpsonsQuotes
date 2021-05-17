@@ -18,7 +18,6 @@ class QuoteRepository constructor(
 ) {
     suspend fun getQuotes(): Flow<DataState> = flow {
         emit(DataState.Loading)
-        delay(3000)
         try {
             val quoteData = quoteRetrofit.get()
             val quoteMap = newtworkMapper.mapFromEntityList(quoteData)
@@ -28,7 +27,6 @@ class QuoteRepository constructor(
                 quoteDao.insert(cacheMapper.mapToEntity(tmpQuote))
                 Log.d("AppDebug", "Probando " + tmpQuote.id + " de " + tmpQuote.character)
             }
-
             val cacheQuote = quoteDao.get()
             emit(DataState.Success(cacheMapper.mapFromEntityList(cacheQuote)))
         } catch (e: Exception){

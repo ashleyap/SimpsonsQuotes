@@ -1,5 +1,6 @@
 package uca.edu.simpsonsquotes.utils
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,6 +37,7 @@ class AdapterQuotes () : RecyclerView.Adapter<AdapterQuotes.ViewHolder>() {
         val model= items[position]
         holder.quote.text = model.quote
         holder.character.text = model.character
+        Log.d("AppDebug", "Probando recyclerview: " + model.character)
         Picasso.get()
             .load(model.image)
             .into(holder.image)
